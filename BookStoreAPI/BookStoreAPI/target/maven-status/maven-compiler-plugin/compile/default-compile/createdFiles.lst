@@ -1,0 +1,11 @@
+com\bookstore\entity\AuthorEntity.class
+com\bookstore\service\BookService.class
+com\bookstore\bookstoreapi\BookStoreApiApplication.class
+com\bookstore\entity\BookEntity.class
+com\bookstore\controller\BookController.class
+com\bookstore\model\Author$AuthorBuilder.class
+com\bookstore\model\Book.class
+com\bookstore\model\Author.class
+com\bookstore\repository\BookRepository.class
+com\bookstore\model\Book$BookBuilder.class
+com\bookstore\repository\AuthorRepository.class

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!-- Example changeset for creating the join table for the many-to-many relationship -->
+    <changeSet id="createBookAuthorTable" author="SYSTEM" dbms="H2">
+        <createTable tableName="book_author">
+            <column name="isbn" type="VARCHAR(13)">
+                <constraints nullable="false" foreignKeyName="fk_book_author_book"/>
+            </column>
+            <column name="author_id" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="fk_book_author_author"/>
+            </column>
+        </createTable>
+
+        <!-- Define primary key separately -->
+        <addPrimaryKey columnNames="isbn, author_id" constraintName="pk_book_author" tableName="book_author"/>
+
+        <addForeignKeyConstraint baseTableName="book_author" baseColumnNames="isbn"
+                                 referencedTableName="book" referencedColumnNames="isbn"
+                                 constraintName="fk_book_author_book" onDelete="CASCADE"/>
+        <addForeignKeyConstraint baseTableName="book_author" baseColumnNames="author_id"
+                                 referencedTableName="author" referencedColumnNames="author_id"
+                                 constraintName="fk_book_author_author" onDelete="CASCADE"/>
+    </changeSet>
+</databaseChangeLog>
